@@ -15,14 +15,13 @@ const UserList = ({data=[]}) => {
   const handleNext = () => {
     if (currentPage < Math.ceil(data.length / usersPerPage)) {
       setCurrentPage(currentPage + 1);
-      setPage(page+1)
+      
     }
   };
 
   const handlePrev = () => {
     if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-      setPage(page-1)
+      setCurrentPage(currentPage - 1); 
     }
   };
 
@@ -43,7 +42,7 @@ const UserList = ({data=[]}) => {
       {
         paginatedUsers.map((data)=>{
             return (
-             <li key={data.id} className='nav-link col-lg-3 col-md-3 col-sm-10 col-10 mx-auto '>
+             <li key={data.id} className='nav-link col-lg-3 col-md-3 col-sm-12 col-12 mx-auto '>
                 
                 <div className='my-2 border bg-secondary border-2 rounded py-3 px-4 mx-auto'>
                     <div className=' text-lg font-bold text-white'>
@@ -61,7 +60,7 @@ const UserList = ({data=[]}) => {
      
       </div>
     </ul>
-    <div className='d-flex justify-content-around'>
+    <div className='d-flex justify-content-between'>
       <div>
         <button  className='btn bg-primary text-white'
         onClick={()=>handlePrev()}
@@ -69,16 +68,19 @@ const UserList = ({data=[]}) => {
       </div>
 
       <div>
+      <ul>
       {getPaginationNumbers().map((page) => (
           <button
             key={page}
             onClick={() => setCurrentPage(page)}
-            className={`px-4 py-2 mx-2 shadow btn border ${page === currentPage ? 'bg-blue-700 text-green-400' : 'bg-gray-200 text-black'}`}
+            className={`px-4 py-2  mx-2 shadow btn border ${page === currentPage ? 'bg-blue-700 text-green-400' : 'bg-gray-200 text-black'}`}
           >
             {page}
           </button>
+          
         ))}
 
+      </ul>
       </div>
       
       <div>
